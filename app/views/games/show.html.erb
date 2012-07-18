@@ -1,0 +1,9 @@
+<%= show_for @game do |s| %>
+  <%= s.attribute :name %>
+  <%= s.attribute :bgg_id %>
+  <%= s.attribute :high_score_win %>
+  <%= s.attribute :exclude %>
+<% end %>
+
+<%= link_to 'Edit', edit_game_path(@game), class: 'btn btn-warning' if can? :edit, @game %>
+<%= link_to 'Back', games_path, class: 'btn' if can? :index, :game %>

@@ -1,0 +1,29 @@
+<h1>Listing instances</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+        <th><%= Instance.human_attribute_name :play_date%></th>
+        <th><%= Instance.human_attribute_name :game_id%></th>
+        <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @instances) do |instance| %>
+        <td><%= instance.play_date %></td>
+        <td><%= instance.game.name %></td>
+        <td>
+        <div class='btn-group'>
+          <%= link_to 'Show', instance, class: 'btn' if can? :show, instance %>
+          <%= link_to 'Edit', edit_instance_path(instance), class: 'btn btn-warning' if can? :edit, instance %>
+          <%= link_to 'Destroy', instance, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger' if can? :destroy, instance %>
+        </div>
+      </td>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Instance', new_instance_path, class: 'btn' if can? :new, :instance %>

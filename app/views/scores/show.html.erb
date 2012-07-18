@@ -1,0 +1,8 @@
+<%= show_for @score do |s| %>
+  <%= s.association :instance %>
+  <%= s.association :player %>
+  <%= s.attribute :score %>
+<% end %>
+
+<%= link_to 'Edit', edit_score_path(@score), class: 'btn btn-warning' if can? :edit, @score %>
+<%= link_to 'Back', scores_path, class: 'btn' if can? :index, :score %>

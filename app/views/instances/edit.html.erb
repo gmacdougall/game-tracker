@@ -1,0 +1,6 @@
+<h1>Editing instance</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @instance, class: 'btn' if can? :show, @instance %>
+<%= link_to 'Back', instances_path, class: 'btn' if can? :index, :instance %>

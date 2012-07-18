@@ -1,0 +1,14 @@
+<%= simple_form_for(@game) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :bgg_id %>
+    <%= f.input :high_score_win %>
+    <%= f.input :exclude %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+<% end %>

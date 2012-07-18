@@ -1,0 +1,7 @@
+<%= show_for @instance do |s| %>
+  <%= s.attribute :play_date %>
+  <%= s.association :game %>
+<% end %>
+
+<%= link_to 'Edit', edit_instance_path(@instance), class: 'btn btn-warning' if can? :edit, @instance %>
+<%= link_to 'Back', instances_path, class: 'btn' if can? :index, :instance %>

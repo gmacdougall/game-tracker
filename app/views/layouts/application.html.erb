@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GameTracker</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class='navbar navbar-fixed-top'>
+    <div class='navbar-inner'>
+      <div class='container'>
+        <ul class='nav'>
+          <li><%= link_to 'Players', players_path %></li>
+          <li><%= link_to 'Games', games_path %></li>
+          <li><%= link_to 'Scores', scores_path %></li>
+          <li><%= link_to 'Instances', instances_path %></li>
+        </ul>
+        <ul class='nav pull-right'>
+          <% if current_user.nil? %>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <% else %>
+            <li><%= link_to current_user.email, edit_user_registration_path(current_user) %></li>
+            <li class='divider-vertical'></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class='container' style='margin-top: 40px'>
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+  </div>
+
+
+</body>
+</html>

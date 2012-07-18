@@ -1,0 +1,13 @@
+<%= simple_form_for(@score) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :instance %>
+    <%= f.association :player %>
+    <%= f.input :score %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+<% end %>

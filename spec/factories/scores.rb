@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :score do
-    instance_id 1
-    player_id 1
+    instance
+    player
     score "9.99"
   end
 end

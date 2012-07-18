@@ -30,12 +30,18 @@
     </div>
   </div>
 
-  <div class='container' style='margin-top: 40px'>
+  <div class='container' style='margin-top: 50px'>
     <% if notice %>
-      <p class="notice"><%= notice %></p>
+      <div class="alert fade in">
+        <a class='close' data-dismiss="alert" href="#">&times;</a>
+        <%= notice %>
+      </div>
     <% end %>
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+      <div class="alert alert-error fade in">
+        <a class='close' data-dismiss="alert" href="#">&times;</a>
+        <%= alert %>
+      </div>
     <% end %>
 
     <%= yield %>

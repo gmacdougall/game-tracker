@@ -11,26 +11,34 @@
   <div class='navbar navbar-fixed-top'>
     <div class='navbar-inner'>
       <div class='container'>
-        <ul class='nav'>
-          <li><%= link_to 'Players', players_path %></li>
-          <li><%= link_to 'Games', games_path %></li>
-          <li><%= link_to 'Scores', scores_path %></li>
-          <li><%= link_to 'Instances', instances_path %></li>
-        </ul>
-        <ul class='nav pull-right'>
-          <% if current_user.nil? %>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <% else %>
-            <li><%= link_to current_user.email, edit_user_registration_path(current_user) %></li>
-            <li class='divider-vertical'></li>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <% end %>
-        </ul>
+        <a class='btn btn-navbar' data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= link_to 'Interactivity Games', root_path, class: 'brand' %>
+        <div class="nav-collapse">
+          <ul class='nav'>
+            <li><%= link_to 'Players', players_path %></li>
+            <li><%= link_to 'Games', games_path %></li>
+            <li><%= link_to 'Scores', scores_path %></li>
+            <li><%= link_to 'Instances', instances_path %></li>
+          </ul>
+          <ul class='nav pull-right'>
+            <% if current_user.nil? %>
+              <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <% else %>
+              <li><%= link_to current_user.email, edit_user_registration_path(current_user) %></li>
+              <li class='divider-vertical'></li>
+              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class='container' style='margin-top: 50px'>
+  <div class='container'>
     <% if notice %>
       <div class="alert fade in">
         <a class='close' data-dismiss="alert" href="#">&times;</a>

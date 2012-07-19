@@ -1,6 +1,10 @@
 <%= show_for @instance do |s| %>
   <%= s.attribute :play_date %>
   <%= s.association :game %>
+  <%= s.association :scores, collection_tag: :ul do |score| %>
+    <li><%= "#{score.player.name} - #{score.score}" %>
+    <%= " WIN" if @instance.winners.include? score.player %></li>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_instance_path(@instance), class: 'btn btn-warning' if can? :edit, @instance %>

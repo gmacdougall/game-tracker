@@ -6,7 +6,7 @@
         <th><%= Game.human_attribute_name :name%></th>
         <th><%= Game.human_attribute_name :bgg_id%></th>
         <th><%= Game.human_attribute_name :high_score_win%></th>
-        <th><%= Game.human_attribute_name :exclude%></th>
+        <th><%= Game.human_attribute_name :exclude_from_stats%></th>
         <th></th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
         <td><%= game.name %></td>
         <td><%= game.bgg_id %></td>
         <td><%= game.high_score_win %></td>
-        <td><%= game.exclude %></td>
+        <td><%= game.exclude_from_stats%></td>
         <td>
         <div class='btn-group'>
           <%= link_to 'Show', game, class: 'btn' if can? :show, game %>

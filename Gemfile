@@ -40,6 +40,5 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'rack-livereload'
-  gem 'rails-footnotes'
   gem 'spork'
 end

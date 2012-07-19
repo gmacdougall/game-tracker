@@ -3,8 +3,12 @@ class Instance < ActiveRecord::Base
 
   belongs_to :game
   has_many :scores
+  accepts_nested_attributes_for :scores
 
-  attr_accessible :game_id, :play_date
+  validates :play_date, presence: true
+  validates :game_id, presence: true
+
+  attr_accessible :game_id, :play_date, :scores_attributes
 
   def name
     "#{play_date} - #{game.name}"

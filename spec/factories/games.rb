@@ -4,11 +4,11 @@ FactoryGirl.define do
   factory :game do
     name "Game"
     high_score_win true
-    exclude false
+    exclude_from_stats false
 
     factory :agricola do
       name "Agricola"
-    bgg_id 31260
+      bgg_id 31260
     end
 
     factory :formula_de do

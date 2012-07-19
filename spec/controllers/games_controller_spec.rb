@@ -24,7 +24,11 @@ describe GamesController do
   # Game. As you add validations to Game, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      name: "Name",
+      exclude_from_stats: false,
+      high_score_win: true
+    }
   end
 
   # This should return the minimal set of values that should be in the session

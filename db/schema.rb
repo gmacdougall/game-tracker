@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717184618) do
+ActiveRecord::Schema.define(:version => 20120720155732) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
     t.integer  "bgg_id"
     t.boolean  "high_score_win"
-    t.boolean  "exclude"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.boolean  "exclude_from_stats"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "instances", :force => true do |t|

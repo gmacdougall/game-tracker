@@ -2,7 +2,7 @@
   <%= s.attribute :name %>
   <%= s.attribute :bgg_id %>
   <%= s.attribute :high_score_win %>
-  <%= s.attribute :exclude %>
+  <%= s.attribute :exclude_from_stats %>
 <% end %>
 
 <%= link_to 'Edit', edit_game_path(@game), class: 'btn btn-warning' if can? :edit, @game %>

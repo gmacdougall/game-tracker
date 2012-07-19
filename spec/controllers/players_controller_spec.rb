@@ -24,7 +24,10 @@ describe PlayersController do
   # Player. As you add validations to Player, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      first_name: "Wolfgang",
+      last_name: "Kramer"
+    }
   end
 
   # This should return the minimal set of values that should be in the session

@@ -24,7 +24,10 @@ describe InstancesController do
   # Instance. As you add validations to Instance, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      game_id: 1,
+      play_date: '2012-01-01'
+    }
   end
 
   # This should return the minimal set of values that should be in the session

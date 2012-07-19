@@ -25,6 +25,7 @@ class InstancesController < ApplicationController
   # GET /instances/new.json
   def new
     @instance = Instance.new
+    @instance.scores.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +44,7 @@ class InstancesController < ApplicationController
     @instance = Instance.new(params[:instance])
 
     respond_to do |format|
-      if @instance.save
+      if @instance.save!
         format.html { redirect_to @instance, notice: 'Instance was successfully created.' }
         format.json { render json: @instance, status: :created, location: @instance }
       else

@@ -24,7 +24,11 @@ describe ScoresController do
   # Score. As you add validations to Score, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      player_id: 1,
+      instance_id: 1,
+      score: 20
+    }
   end
 
   # This should return the minimal set of values that should be in the session

@@ -45,6 +45,7 @@ Spork.prefork do
     config.order = "random"
 
     config.include Devise::TestHelpers, type: [:controller, :view]
+    config.include FactoryGirl::Syntax::Methods
   end
 end
 

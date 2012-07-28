@@ -10,31 +10,38 @@ describe Instance do
 
   let(:game) { FactoryGirl.build :agricola }
   let(:instance) { FactoryGirl.build :instance, game: game }
-  let(:player1) { FactoryGirl.build :player, first_name: "Player", last_name: "One" }
-  let(:player2) { FactoryGirl.build :player, first_name: "Player", last_name: "Two" }
-  let(:player3) { FactoryGirl.build :player, first_name: "Player", last_name: "Three" }
 
-  describe '.winners' do
-    let(:score1) { 10 }
-    let(:score2) { 8 }
-    let(:score3) { 2 }
+  let(:players) do
+    [
+      FactoryGirl.build(:player, first_name: "Player", last_name: "One"),
+      FactoryGirl.build(:player, first_name: "Player", last_name: "Two"),
+      FactoryGirl.build(:player, first_name: "Player", last_name: "Three"),
+    ]
+  end
+  let(:score0) { 10 }
+  let(:score1) { 8 }
+  let(:score2) { 2 }
+  let(:scores) do
+    [
+      FactoryGirl.build(:score, instance: instance, player: players[0], score: score0),
+      FactoryGirl.build(:score, instance: instance, player: players[1], score: score1),
+      FactoryGirl.build(:score, instance: instance, player: players[2], score: score2)
+    ]
+  end
 
-    before(:each) do
-      instance.scores = [
-        FactoryGirl.build(:score, instance: instance, player: player1, score: score1),
-        FactoryGirl.build(:score, instance: instance, player: player2, score: score2),
-        FactoryGirl.build(:score, instance: instance, player: player3, score: score3)
-      ]
-    end
+  before(:each) do
+    instance.scores = scores
+  end
 
-    context "when high score wins" do
+  context "when high score wins" do
+    describe '.winners' do
       context "when single winner" do
-        its(:winners) { should == [player1] }
+        its(:winners) { should == [players[0]] }
       end
 
       context "when multiple winners" do
-        let(:score2) { score1 }
-        its(:winners) { should =~ [player1, player2] }
+        let(:score1) { 10 }
+        its(:winners) { should =~ [players[0], players[1]] }
       end
     end
 
@@ -42,13 +49,26 @@ describe Instance do
       let(:game) { FactoryGirl.build :formula_de }
 
       context "when single winner" do
-        its(:winners) { should == [player3] }
+        its(:winners) { should == [players[2]] }
       end
 
       context "when multiple winners" do
-        let(:score2) { score3 }
-        its(:winners) { should =~ [player2, player3] }
+        let(:score1) { score2 }
+        its(:winners) { should =~ [players[1], players[2]] }
       end
+    end
+  end
+
+  describe '.remove_empty_scores' do
+    before(:each) { subject.remove_empty_scores! }
+    context 'when no empty scores' do
+      it { should have(3).scores }
+    end
+
+    context 'when 1 empty score' do
+      let(:score1) { nil }
+      it { should have(2).scores }
+      its(:scores) { should_not include(scores[1]) }
     end
   end
 end

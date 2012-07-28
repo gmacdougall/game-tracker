@@ -22,6 +22,12 @@ class Instance < ActiveRecord::Base
     winners
   end
 
+  def remove_empty_scores!
+    scores.each do |score|
+      scores.delete score if score.score.nil?
+    end
+  end
+
   private
   def best_score
     best_score = nil

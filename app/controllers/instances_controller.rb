@@ -42,9 +42,10 @@ class InstancesController < ApplicationController
   # POST /instances.json
   def create
     @instance = Instance.new(params[:instance])
+    @instance.remove_empty_scores!
 
     respond_to do |format|
-      if @instance.save!
+      if @instance.save
         format.html { redirect_to @instance, notice: 'Instance was successfully created.' }
         format.json { render json: @instance, status: :created, location: @instance }
       else

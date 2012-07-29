@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.select('games.*, count(*) as play_count').joins(:instances).group('games.id').order('play_count desc')
+    @games = Game.select('games.*, count(*) as play_count').joins(:instances).group('games.id').page(params[:page]).order('play_count desc')
 
     respond_to do |format|
       format.html # index.html.erb

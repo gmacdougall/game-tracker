@@ -3,7 +3,7 @@
   <%= s.association :game %>
   <%= s.association :scores, collection_tag: :ul do |score| %>
     <li><%= "#{score.player.name} - #{score.score}" %>
-    <%= " WIN" if @instance.winners.include? score.player %></li>
+    <%= " WIN" if @instance.winning_scores.include? score %></li>
   <% end %>
 <% end %>
 

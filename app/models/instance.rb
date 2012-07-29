@@ -14,10 +14,14 @@ class Instance < ActiveRecord::Base
     "#{play_date} - #{game.name}"
   end
 
-  def winners
+  def players
+    scores.map { |s| s.player }
+  end
+
+  def winning_scores
     winners = []
     scores.each do |score|
-      winners << score.player if score.score == best_score
+      winners << score if score.score == best_score
     end
     winners
   end

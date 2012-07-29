@@ -8,6 +8,7 @@ gem 'show_for'
 gem 'will_paginate-bootstrap'
 gem 'thin'
 gem 'irbtools'
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.

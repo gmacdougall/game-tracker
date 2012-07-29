@@ -34,14 +34,14 @@ describe Instance do
   end
 
   context "when high score wins" do
-    describe '.winners' do
+    describe '.winning_scores' do
       context "when single winner" do
-        its(:winners) { should == [players[0]] }
+        its(:winning_scores) { should == [scores[0]] }
       end
 
       context "when multiple winners" do
         let(:score1) { 10 }
-        its(:winners) { should =~ [players[0], players[1]] }
+        its(:winning_scores) { should =~ [scores[0], scores[1]] }
       end
     end
 
@@ -49,12 +49,12 @@ describe Instance do
       let(:game) { FactoryGirl.build :formula_de }
 
       context "when single winner" do
-        its(:winners) { should == [players[2]] }
+        its(:winning_scores) { should == [scores[2]] }
       end
 
       context "when multiple winners" do
         let(:score1) { score2 }
-        its(:winners) { should =~ [players[1], players[2]] }
+        its(:winning_scores) { should =~ [scores[1], scores[2]] }
       end
     end
   end

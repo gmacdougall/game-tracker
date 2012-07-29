@@ -10,6 +10,15 @@ class Instance < ActiveRecord::Base
 
   attr_accessible :game_id, :play_date, :scores_attributes
 
+  def player_score(player)
+    scores.each { |s| return s if s.player == player }
+    nil
+  end
+
+  def player_won?(player)
+    winning_scores.include?(player_score(player))
+  end
+
   def name
     "#{play_date} - #{game.name}"
   end
@@ -19,11 +28,10 @@ class Instance < ActiveRecord::Base
   end
 
   def winning_scores
-    winners = []
-    scores.each do |score|
+    scores.inject([]) do |winners, score|
       winners << score if score.score == best_score
+      winners
     end
-    winners
   end
 
   def remove_empty_scores!
@@ -34,11 +42,7 @@ class Instance < ActiveRecord::Base
 
   private
   def best_score
-    best_score = nil
-    scores.each do |score|
-      best_score = better_score(score.score, best_score)
-    end
-    best_score
+    scores.inject(nil) { |best, score| best = better_score(score.score, best) }
   end
 
   def better_score s1, s2

@@ -71,4 +71,26 @@ describe Instance do
       its(:scores) { should_not include(scores[1]) }
     end
   end
+
+  describe '.player_score' do
+    it 'is false if the player was not involved in this game' do
+      subject.player_score(Player.new).should be_false
+    end
+
+    it 'returns the matching score if the player was involved in the game' do
+      subject.player_score(scores[1].player).should == scores[1]
+    end
+  end
+
+  describe '.player_won?' do
+    it 'is true if that player won the game' do
+      subject.player_won?(players[0]).should be_true
+    end
+    it 'is false if that player did not win the game' do
+      subject.player_won?(players[1]).should be_false
+    end
+    it 'is false if the player was not involved in the game' do
+      subject.player_won?(Player.new).should be_false
+    end
+  end
 end

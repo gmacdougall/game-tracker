@@ -57,7 +57,7 @@
             <td><%= @set.wins player %></td>
             <td><%= @set.losses player %></td>
             <td><%= @set.excluded player %></td>
-            <td><%= number_with_precision @set.winning_percentage(player), precision: 3 %></td>
+            <td><%= number_with_precision @set.statistics(player).winning_percentage, precision: 3 %></td>
           </tr>
         <% end %>
       </tbody>

@@ -93,4 +93,31 @@ describe Instance do
       subject.player_won?(Player.new).should be_false
     end
   end
+
+  describe '.played_by?' do
+    it 'is true if the player was involved in the game' do
+      subject.played_by?(players[0]).should be_true
+    end
+    it 'is false if the player was not involved in the game' do
+      subject.played_by?(Player.new).should be_false
+    end
+  end
+
+  describe '.exclude?' do
+    context "when game not flagged as excluded" do
+      context "when all players win" do
+        let(:score1) { 10 }
+        let(:score2) { 10 }
+        its(:exclude?) { should be_true }
+      end
+      context "when there is at least one winner and one non-winner" do
+        its(:exclude?) { should be_false }
+      end
+    end
+
+    context "when game flagged as excluded" do
+      let(:game) { FactoryGirl.build :agricola, exclude_from_stats: true }
+      its(:exclude?) { should be_true }
+    end
+  end
 end

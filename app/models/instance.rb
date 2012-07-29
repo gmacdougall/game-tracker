@@ -19,6 +19,10 @@ class Instance < ActiveRecord::Base
     winning_scores.include?(player_score(player))
   end
 
+  def played_by?(player)
+    players.include? player
+  end
+
   def name
     "#{play_date} - #{game.name}"
   end
@@ -38,6 +42,10 @@ class Instance < ActiveRecord::Base
     scores.each do |score|
       scores.delete score if score.score.nil?
     end
+  end
+
+  def exclude?
+    (winning_scores.size == scores.size) || game.exclude_from_stats
   end
 
   private

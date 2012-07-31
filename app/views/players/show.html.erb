@@ -16,17 +16,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @top_games.each do |g| %>
-      <tr>
-        <td><%= link_to g.name, g %></td>
-        <% set = InstanceSet.new g.instances %>
-        <% stats = InstanceSetStatistics.new set, @player %>
-        <td><%= set.plays(@player) %></td>
-        <td><%= set.wins(@player) %></td>
-        <td><%= set.losses(@player) %></td>
-        <td><%= set.excluded(@player) %></td>
-        <td><%= number_with_precision stats.winning_percentage, precision: 3 %></td>
-      </tr>
+    <% @games.each do |g| %>
+      <% set = InstanceSet.new g.instances %>
+      <% if set.plays(@player) > 0 %>
+        <tr>
+          <td><%= link_to g.name, g %></td>
+          <% stats = InstanceSetStatistics.new set, @player %>
+          <td><%= set.plays(@player) %></td>
+          <td><%= set.wins(@player) %></td>
+          <td><%= set.losses(@player) %></td>
+          <td><%= set.excluded(@player) %></td>
+          <td><%= number_with_precision stats.winning_percentage, precision: 3 %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

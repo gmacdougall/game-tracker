@@ -14,10 +14,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     @player = Player.find(params[:id])
-    @top_games = Game.select('games.*, count(*) as count')
-      .joins(:instances => :scores)
-      .where('scores.player_id = ?', @player)
-      .group('games.id')
+    @games = Game.includes(:instances => [{ :scores => :player }, :game])
 
     respond_to do |format|
       format.html # show.html.erb

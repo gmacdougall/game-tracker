@@ -20,13 +20,13 @@
         </tr>
       </thead>
       <tbody>
-      <% @game.instances.order('play_date desc').each do |instance| %>
+      <% @game.instances.each do |instance| %>
         <tr>
           <td><%= link_to instance.play_date, instance %></td>
           <td>
-              <% instance.scores.each do |s| %>
-                <%= s.player.name %> - <%= s.score %> <% if s.win? %><i class='icon-star'></i><% end %><br>
-              <% end %>
+            <% instance.scores.each do |s| %>
+              <%= s.player.name %> - <%= s.score %> <% if s.win? %><i class='icon-star'></i><% end %><br>
+            <% end %>
           </td>
         </tr>
       <% end %>

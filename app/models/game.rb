@@ -8,4 +8,8 @@ class Game < ActiveRecord::Base
   validates_inclusion_of :high_score_win, in: [true, false]
 
   attr_accessible :bgg_id, :exclude_from_stats, :high_score_win, :name
+
+  def bgg_url
+    "http://boardgamegeek.com/boardgame/#{bgg_id}"
+  end
 end

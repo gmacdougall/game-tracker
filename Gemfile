@@ -5,11 +5,10 @@ gem 'sqlite3'
 
 gem 'simple_form'
 gem 'show_for'
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
 gem 'thin'
 gem 'irbtools'
 gem 'mysql2'
+gem 'jquery-datatables-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

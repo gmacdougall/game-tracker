@@ -2,9 +2,18 @@
  *= require_self
  *= require_tree .
  *= require bootstrap-datepicker
+ *= require dataTables/jquery.dataTables.bootstrap
  */
 @import "bootstrap";
 body {
   padding-top: 60px;
 }
 @import "bootstrap-responsive";
+
+h1 {
+  margin-bottom: 1em;
+}
+
+.pagination a {
+  padding: 0 10px;
+}

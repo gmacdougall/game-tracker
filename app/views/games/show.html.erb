@@ -1,17 +1,17 @@
-<div class='row'>
-  <div class='span2'>
-    <%= show_for @game do |s| %>
-      <%= s.attribute :name %>
-      <%= s.attribute :bgg_id %>
-      <%= s.attribute :high_score_win %>
-      <%= s.attribute :exclude_from_stats %>
-    <% end %>
+<div class='show-buttons'>
+  <%= link_to 'Edit', edit_game_path(@game), class: 'btn btn-warning' if can? :edit, @game %>
+  <%= link_to 'BGG', @game.bgg_url, class: 'btn' %>
+  <%= link_to 'Back', games_path, class: 'btn' if can? :index, :game %>
+</div>
+<h1><%= @game.name %></h1>
+<%= show_for @game do |s| %>
+  <%= s.attribute :high_score_win %>
+  <%= s.attribute :exclude_from_stats %>
+<% end %>
 
-    <%= link_to 'Edit', edit_game_path(@game), class: 'btn btn-warning' if can? :edit, @game %>
-    <%= link_to 'Back', games_path, class: 'btn' if can? :index, :game %>
-  </div>
+<div class='row'>
   <div class='span5'>
-    <h4>Instances</h4>
+    <h3>Instances</h3>
     <table class='table'>
       <thead>
         <tr>
@@ -24,21 +24,19 @@
         <tr>
           <td><%= link_to instance.play_date, instance %></td>
           <td>
-            <ul>
               <% instance.scores.each do |s| %>
-                <li><%= s.player.name %> - <%= s.score %> <% if s.win? %><i class='icon-star'></i><% end %></li>
+                <%= s.player.name %> - <%= s.score %> <% if s.win? %><i class='icon-star'></i><% end %><br>
               <% end %>
-            </ul>
           </td>
         </tr>
       <% end %>
     </tbody>
     </table>
   </div>
-  <div class='span5'>
-    <h4>Statistics</h4>
+  <div class='span7'>
+    <h3>Statistics</h3>
     <% @set = InstanceSet.new @game.instances %>
-    <table class='table table-bordered table-condensed'>
+    <table class='table table-bordered table-condensed data-table-no-pagination'>
       <thead>
         <tr>
           <th>Player</th>

@@ -1,11 +1,26 @@
-<%= show_for @instance do |s| %>
-  <%= s.attribute :play_date %>
-  <%= s.association :game %>
-  <%= s.association :scores, collection_tag: :ul do |score| %>
-    <li><%= "#{score.player.name} - #{score.score}" %>
-    <%= " WIN" if @instance.winning_scores.include? score %></li>
-  <% end %>
-<% end %>
+<div class='row'>
+  <div class='span2'>
+    <%= show_for @instance do |s| %>
+      <%= s.attribute :play_date %>
+      <%= s.association :game %>
+    <% end %>
+  </div>
+  <div class='span4'>
+    <h3>Scores</h3>
+    <table class='table table-bordered table-condensed'>
+      <tbody>
+        <% @instance.scores.each do |score| %>
+          <tr>
+            <td><%= link_to score.player.name, score.player %></td>
+            <td><%= score.score %></td>
+            <td><%= (@instance.winning_scores.include?(score) ? "<i class='icon-star'></i>" : "&nbsp;").html_safe %></li>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_instance_path(@instance), class: 'btn btn-warning' if can? :edit, @instance %>
-<%= link_to 'Back', instances_path, class: 'btn' if can? :index, :instance %>
+<%= link_to 'Destroy', @instance, class: 'btn btn-danger', data: { confirm: "Are you sure you wish to delete this instance?" } if can? :destroy, @instance %>
+<%= link_to 'Back', :back, class: 'btn' %>

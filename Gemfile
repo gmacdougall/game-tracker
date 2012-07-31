@@ -9,7 +9,6 @@ gem 'thin'
 gem 'irbtools'
 gem 'mysql2'
 gem 'jquery-datatables-rails'
-gem 'rails-footnotes'
 
 # Gems used only for assets and not required
 # in production environments by default.

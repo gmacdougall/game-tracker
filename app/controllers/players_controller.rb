@@ -15,7 +15,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @top_games = Game.select('games.*, count(*) as count')
-      .includes(:instances => { :scores => :player })
+      .joins(:instances => :scores)
       .where('scores.player_id = ?', @player)
       .group('games.id')
 

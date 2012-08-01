@@ -152,7 +152,7 @@ describe InstancesController do
     it "redirects to the instances list" do
       instance = Instance.create! valid_attributes
       delete :destroy, {:id => instance.to_param}, valid_session
-      response.should redirect_to(instances_url)
+      response.should redirect_to(root_path)
     end
   end
 

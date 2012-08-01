@@ -1,9 +1,8 @@
 class ScoresController < ApplicationController
+  load_and_authorize_resource
   # GET /scores/new
   # GET /scores/new.json
   def new
-    @score = Score.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @score }
@@ -12,15 +11,12 @@ class ScoresController < ApplicationController
 
   # GET /scores/1/edit
   def edit
-    @score = Score.find(params[:id])
     @instances = Instance.includes(:game).all
   end
 
   # POST /scores
   # POST /scores.json
   def create
-    @score = Score.new(params[:score])
-
     respond_to do |format|
       if @score.save
         format.html { redirect_to @score, notice: 'Score was successfully created.' }
@@ -35,8 +31,6 @@ class ScoresController < ApplicationController
   # PUT /scores/1
   # PUT /scores/1.json
   def update
-    @score = Score.find(params[:id])
-
     respond_to do |format|
       if @score.update_attributes(params[:score])
         format.html { redirect_to @score, notice: 'Score was successfully updated.' }
@@ -51,7 +45,6 @@ class ScoresController < ApplicationController
   # DELETE /scores/1
   # DELETE /scores/1.json
   def destroy
-    @score = Score.find(params[:id])
     @score.destroy
 
     respond_to do |format|

@@ -37,6 +37,9 @@ describe InstancesController do
     {}
   end
 
+  let(:user) { create :admin }
+  before(:each) { @controller.stub(:current_user) { user } }
+
   describe "GET show" do
     it "assigns the requested instance as @instance" do
       instance = Instance.create! valid_attributes

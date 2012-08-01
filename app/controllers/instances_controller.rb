@@ -1,9 +1,8 @@
 class InstancesController < ApplicationController
+  load_and_authorize_resource
   # GET /instances/1
   # GET /instances/1.json
   def show
-    @instance = Instance.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @instance }
@@ -13,8 +12,6 @@ class InstancesController < ApplicationController
   # GET /instances/new
   # GET /instances/new.json
   def new
-    @instance = Instance.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @instance }
@@ -23,13 +20,11 @@ class InstancesController < ApplicationController
 
   # GET /instances/1/edit
   def edit
-    @instance = Instance.find(params[:id])
   end
 
   # POST /instances
   # POST /instances.json
   def create
-    @instance = Instance.new(params[:instance])
     @instance.remove_empty_scores!
 
     respond_to do |format|
@@ -46,8 +41,6 @@ class InstancesController < ApplicationController
   # PUT /instances/1
   # PUT /instances/1.json
   def update
-    @instance = Instance.find(params[:id])
-
     respond_to do |format|
       if @instance.update_attributes(params[:instance])
         format.html { redirect_to @instance, notice: 'Instance was successfully updated.' }
@@ -62,7 +55,6 @@ class InstancesController < ApplicationController
   # DELETE /instances/1
   # DELETE /instances/1.json
   def destroy
-    @instance = Instance.find(params[:id])
     @instance.destroy
 
     respond_to do |format|

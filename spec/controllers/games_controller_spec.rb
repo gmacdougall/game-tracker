@@ -38,6 +38,9 @@ describe GamesController do
     {}
   end
 
+  let(:user) { create :admin }
+  before(:each) { @controller.stub(:current_user) { user } }
+
   describe "GET index" do
     it "assigns all games as @games" do
       game = create :game

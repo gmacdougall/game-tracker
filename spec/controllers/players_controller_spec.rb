@@ -37,6 +37,9 @@ describe PlayersController do
     {}
   end
 
+  let(:user) { create :admin }
+  before(:each) { @controller.stub(:current_user) { user } }
+
   describe "GET index" do
     it "assigns all players as @players" do
       player = Player.create! valid_attributes

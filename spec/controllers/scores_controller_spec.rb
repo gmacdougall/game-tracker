@@ -38,6 +38,9 @@ describe ScoresController do
     {}
   end
 
+  let(:user) { create :admin }
+  before(:each) { @controller.stub(:current_user) { user } }
+
   describe "GET new" do
     it "assigns a new score as @score" do
       get :new, {}, valid_session

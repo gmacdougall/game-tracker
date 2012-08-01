@@ -16,3 +16,6 @@
 
 # Code Coverage
 /coverage
+
+# Ignore database configuration
+/config/database.yml

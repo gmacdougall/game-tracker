@@ -14,7 +14,6 @@ class InstancesController < ApplicationController
   # GET /instances/new.json
   def new
     @instance = Instance.new
-    @games = Game.order(:name)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -25,7 +24,6 @@ class InstancesController < ApplicationController
   # GET /instances/1/edit
   def edit
     @instance = Instance.find(params[:id])
-    @games = Game.order(:name)
   end
 
   # POST /instances
@@ -68,7 +66,7 @@ class InstancesController < ApplicationController
     @instance.destroy
 
     respond_to do |format|
-      format.html { redirect_to instances_url }
+      format.html { redirect_to @instance.game }
       format.json { head :no_content }
     end
   end

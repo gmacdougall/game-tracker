@@ -30,5 +30,5 @@
 </div>
 
 <%= link_to 'Edit', edit_instance_path(@instance), class: 'btn btn-warning' if can? :edit, @instance %>
-<%= link_to 'Destroy', @instance, class: 'btn btn-danger', data: { confirm: "Are you sure you wish to delete this instance?" } if can? :destroy, @instance %>
+<%= link_to 'Destroy', @instance, class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure you wish to delete this instance?" } if can? :destroy, @instance %>
 <%= link_to 'Back', :back, class: 'btn' %>

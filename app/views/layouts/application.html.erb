@@ -21,7 +21,7 @@
           <ul class='nav'>
             <li><%= link_to 'Players', players_path %></li>
             <li><%= link_to 'Games', games_path %></li>
-            <li><%= link_to 'New Game Instance', new_instance_path %></li>
+            <li><%= link_to 'New Game Instance', new_instance_path if can? :new, :instance %></li>
           </ul>
           <ul class='nav pull-right'>
             <% if current_user.nil? %>

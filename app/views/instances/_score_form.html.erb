@@ -2,7 +2,7 @@
   <%= i.error_notification %>
 
   <div class='form-inputs'>
-    <%= i.association :game %>
+    <%= i.association :game, collection: Game.order(:name) %>
     <%= i.input :play_date, as: :date_picker %>
     <div id='score-container'>
       <h3>Scores</h3>

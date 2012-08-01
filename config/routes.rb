@@ -1,7 +1,7 @@
 GameTracker::Application.routes.draw do
-  resources :scores
+  resources :scores, except: [:index, :show]
 
-  resources :instances
+  resources :instances, except: :index
 
   resources :games
 

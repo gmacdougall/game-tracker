@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @score, class: 'btn' if can? :show, @score %>
-<%= link_to 'Back', scores_path, class: 'btn' if can? :index, :score %>
+<%= link_to 'Back', @score.instance, class: 'btn' if can? :show, @score.instance %>

@@ -32,6 +32,27 @@
     <% end %>
   </tbody>
 </table>
+<h3>Recently Played</h3>
+<table class='table table-bordered table-condensed data-table'>
+  <thead>
+    <tr>
+      <th>Play Date</th>
+      <th>Game Name</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instances.each do |i| %>
+      <% if i.played_by?(@player) %>
+        <tr>
+          <td><%= link_to i.play_date, i %></td>
+          <td><%= link_to i.game.name, i.game %></td>
+          <td><%= i.result @player %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-warning' if can? :edit, @player %>
 <%= link_to 'Back', players_path, class: 'btn' if can? :index, :player %>

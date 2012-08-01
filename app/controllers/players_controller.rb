@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.order(:first_name, :last_name).all
+    @players = Player.includes(:scores).order(:first_name, :last_name).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +15,8 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @games = Game.includes(:instances => [{ :scores => :player }, :game])
+
+    @instances = Instance.includes({:scores => :player}, :game)
 
     respond_to do |format|
       format.html # show.html.erb

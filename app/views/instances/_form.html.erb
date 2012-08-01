@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :play_date, as: :date_picker %>
-    <%= f.association :game %>
+    <%= f.association :game, collection: @games %>
   </div>
 
   <div class="form-actions">

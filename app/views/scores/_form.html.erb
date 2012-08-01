@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :instance %>
+    <%= f.association :instance, collection: @instances %>
     <%= f.association :player %>
     <%= f.input :score %>
   </div>

@@ -14,6 +14,14 @@
             <td><%= link_to score.player.name, score.player %></td>
             <td><%= score.score %></td>
             <td><%= (@instance.winning_scores.include?(score) ? "<i class='icon-star'></i>" : "&nbsp;").html_safe %></li>
+            <% if can? :manage, score %>
+              <td>
+                <div class='btn-group'>
+                  <%= link_to "Edit", [:edit, score], class: 'btn btn-mini btn-warning' %>
+                  <%= link_to "Destroy", score, method: :delete, data: { confirm: "Are you sure you wish to delete this score?" }, class: 'btn btn-mini btn-danger' %>
+                </div>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

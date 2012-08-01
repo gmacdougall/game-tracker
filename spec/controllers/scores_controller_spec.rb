@@ -38,22 +38,6 @@ describe ScoresController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all scores as @scores" do
-      score = Score.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:scores).should eq([score])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested score as @score" do
-      score = Score.create! valid_attributes
-      get :show, {:id => score.to_param}, valid_session
-      assigns(:score).should eq(score)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new score as @score" do
       get :new, {}, valid_session

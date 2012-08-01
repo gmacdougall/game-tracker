@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    @games = Game.includes(:instances).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,17 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    @game = Game.includes(:instances).find(params[:id])
+    @game = Game.includes(
+      :instances => [
+        {
+          :scores => [
+            { :instance => [ :scores, :game] },
+            :player
+          ]
+        },
+        :game
+      ]
+    ).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

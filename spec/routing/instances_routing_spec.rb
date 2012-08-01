@@ -3,10 +3,6 @@ require "spec_helper"
 describe InstancesController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/instances").should route_to("instances#index")
-    end
-
     it "routes to #new" do
       get("/instances/new").should route_to("instances#new")
     end

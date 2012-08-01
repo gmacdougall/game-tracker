@@ -23,6 +23,18 @@ class Instance < ActiveRecord::Base
     players.include? player
   end
 
+  def result(player)
+    if (!played_by?(player))
+      nil
+    elsif (exclude?)
+      "X"
+    elsif (player_won?(player))
+      "W"
+    else
+      "L"
+    end
+  end
+
   def name
     "#{play_date} - #{game.name}"
   end

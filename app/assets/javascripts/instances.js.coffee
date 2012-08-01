@@ -8,7 +8,12 @@ class ScoreSelectContainer
       url: '/players.json'
     ).done (data) ->
       for player in data
-        opt = $('<option></option>').val(player.id).text(player.first_name + " " + player.last_name)
+        if player.last_name == null
+          name = player.first_name
+        else
+          name = player.first_name + " " + player.last_name
+
+        opt = $('<option></option>').val(player.id).text(name)
         $select.append opt
 
   addScore: ->

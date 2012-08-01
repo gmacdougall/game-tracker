@@ -37,14 +37,6 @@ describe InstancesController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all instances as @instances" do
-      instance = Instance.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:instances).should eq([instance])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested instance as @instance" do
       instance = Instance.create! valid_attributes

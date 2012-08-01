@@ -1,15 +1,4 @@
 class InstancesController < ApplicationController
-  # GET /instances
-  # GET /instances.json
-  def index
-    @instances = Instance.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @instances }
-    end
-  end
-
   # GET /instances/1
   # GET /instances/1.json
   def show
@@ -25,7 +14,7 @@ class InstancesController < ApplicationController
   # GET /instances/new.json
   def new
     @instance = Instance.new
-    @instance.scores.build
+    @games = Game.order(:name)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +25,7 @@ class InstancesController < ApplicationController
   # GET /instances/1/edit
   def edit
     @instance = Instance.find(params[:id])
+    @games = Game.order(:name)
   end
 
   # POST /instances

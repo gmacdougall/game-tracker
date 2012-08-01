@@ -1,26 +1,4 @@
 class ScoresController < ApplicationController
-  # GET /scores
-  # GET /scores.json
-  def index
-    @scores = Score.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @scores }
-    end
-  end
-
-  # GET /scores/1
-  # GET /scores/1.json
-  def show
-    @score = Score.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @score }
-    end
-  end
-
   # GET /scores/new
   # GET /scores/new.json
   def new
@@ -35,6 +13,7 @@ class ScoresController < ApplicationController
   # GET /scores/1/edit
   def edit
     @score = Score.find(params[:id])
+    @instances = Instance.includes(:game).all
   end
 
   # POST /scores

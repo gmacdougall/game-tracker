@@ -4,7 +4,10 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.includes(:scores).order(:first_name, :last_name).all
+    @players = @players
+      .select('players.*, count(*) as games_played')
+      .joins(:scores)
+      .group('players.id')
 
     respond_to do |format|
       format.html # index.html.erb

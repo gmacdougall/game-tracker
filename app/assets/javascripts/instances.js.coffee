@@ -39,5 +39,5 @@ class ScoreSelectContainer
     @addScore() unless empty
 
 $ ->
-  container = new ScoreSelectContainer
-  container.addScore()
+  if $('#score-container').length
+    container = new ScoreSelectContainer

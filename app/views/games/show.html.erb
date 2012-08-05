@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-      <% @game.instances.each do |instance| %>
+      <% @game.instances.order('play_date desc').each do |instance| %>
         <tr>
           <td><%= link_to instance.play_date, instance %></td>
           <td>

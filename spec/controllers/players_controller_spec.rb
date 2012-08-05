@@ -43,6 +43,7 @@ describe PlayersController do
   describe "GET index" do
     it "assigns all players as @players" do
       player = Player.create! valid_attributes
+      score = create :score, player: player
       get :index, {}, valid_session
       assigns(:players).should eq([player])
     end

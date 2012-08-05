@@ -39,7 +39,7 @@
   <div class='span7'>
     <h3>Statistics</h3>
     <% @set = InstanceSet.new @game.instances %>
-    <table class='table table-bordered table-condensed data-table-no-pagination'>
+    <table class='table table-bordered table-condensed data-table' data-paginate='false' data-filter='false' data-sort-column='2' data-sort-direction='desc'>
       <thead>
         <tr>
           <th>Player</th>

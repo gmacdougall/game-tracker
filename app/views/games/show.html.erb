@@ -53,7 +53,7 @@
       <tbody>
         <% @set.players.each do |player| %>
           <tr>
-            <td><%= player.name %></td>
+            <td><%= link_to player.name, player %></td>
             <td><%= @set.plays player %></td>
             <td><%= @set.wins player %></td>
             <td><%= @set.losses player %></td>

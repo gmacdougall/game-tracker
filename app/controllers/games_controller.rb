@@ -15,6 +15,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @stats = Stat.includes(:player).where(game_id: @game.id)
     @game = Game.includes(
       :instances => [
         {

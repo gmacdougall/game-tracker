@@ -38,7 +38,6 @@
   </div>
   <div class='span7'>
     <h3>Statistics</h3>
-    <% @set = InstanceSet.new @game.instances %>
     <table class='table table-bordered table-condensed data-table' data-paginate='false' data-filter='false' data-sort-column='2' data-sort-direction='desc'>
       <thead>
         <tr>
@@ -47,18 +46,16 @@
           <th>W</th>
           <th>L</th>
           <th>X</th>
-          <th>W%</th>
         </tr>
       </thead>
       <tbody>
-        <% @set.players.each do |player| %>
+        <% @stats.each do |s| %>
           <tr>
-            <td><%= link_to player.name, player %></td>
-            <td><%= @set.plays player %></td>
-            <td><%= @set.wins player %></td>
-            <td><%= @set.losses player %></td>
-            <td><%= @set.excluded player %></td>
-            <td><%= number_with_precision @set.statistics(player).winning_percentage, precision: 3 %></td>
+            <td><%= link_to s.player.name, s.player %></td>
+            <td><%= s.played %></td>
+            <td><%= s.wins %></td>
+            <td><%= s.losses %></td>
+            <td><%= s.excluded %></td>
           </tr>
         <% end %>
       </tbody>

@@ -2,6 +2,7 @@ class Player < ActiveRecord::Base
   resourcify
 
   has_many :scores
+  has_many :stats
 
   attr_accessible :first_name, :last_name
 

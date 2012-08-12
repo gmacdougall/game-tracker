@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source :rubygems
 
-gem 'rails', '3.2.6'
+gem 'rails', '~> 3.2.8'
 gem 'sqlite3'
 
 gem 'simple_form'
@@ -10,6 +10,8 @@ gem 'irbtools'
 gem 'mysql2'
 gem 'jquery-datatables-rails'
 gem 'rack-mini-profiler'
+gem 'rabl'
+gem 'json'
 
 # Gems used only for assets and not required
 # in production environments by default.

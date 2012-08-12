@@ -2,6 +2,7 @@ class Game < ActiveRecord::Base
   resourcify
 
   has_many :instances
+  has_many :stats
 
   validates :name, presence: true
   validates_inclusion_of :exclude_from_stats, in: [true, false]
